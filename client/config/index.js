@@ -14,6 +14,15 @@ module.exports = {
     // If true, eslint errors and warnings will also be shown in the error overlay
     // in the browser.
     showEslintErrorsInOverlay: false,
+    // Various Dev Server settings
+    host: '0.0.0.0',
+    port: 8080,
+
+    /**
+     * Source Maps
+    */
+
+    devtool: 'cheap-module-eval-source-map',
   },
   build: {
     // Paths
@@ -21,4 +30,4 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsRoot: path.resolve(__dirname, '../dist'),
   }
-}
+};
