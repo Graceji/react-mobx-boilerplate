@@ -23,6 +23,8 @@ module.exports = {
     */
 
     devtool: 'cheap-module-eval-source-map',
+
+    cssSourceMap: true
   },
   build: {
     // Paths
