@@ -7,6 +7,9 @@ module.exports = {
     // Paths
     assetsPublicPath: '/',
     assetsSubDirectory: 'static',
+    proxyTable: {
+
+    },
     // Use Eslint Loader?
     // If true, your code will be linted during bundling and
     // linting errors and warnings will be shown in the console.
@@ -17,6 +20,10 @@ module.exports = {
     // Various Dev Server settings
     host: '0.0.0.0',
     port: 8080,
+    notifyOnErrors: true,
+    autoOpenBrowser: false,
+    errorOverlay: true,
+    poll: false,
 
     /**
      * Source Maps
@@ -27,9 +34,23 @@ module.exports = {
     cssSourceMap: true
   },
   build: {
+    index: path.resolve(__dirname, '../dist/index.html'),
     // Paths
     assetsPublicPath: '/',
     assetsSubDirectory: 'static',
     assetsRoot: path.resolve(__dirname, '../dist'),
+
+    /**
+     * Source Maps
+     */
+
+    productionSourceMap: true,
+    devtool: '#source-map',
+
+    productionGzip: false,
+    productionGzipExtensions: ['js', 'css'],
+
+    bundleAnalyzerReport: process.env.npm_config_report
+
   }
 };

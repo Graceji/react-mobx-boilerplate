@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader'; // eslint-disable-line
 
 class App extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
 
@@ -12,8 +12,8 @@ class App extends Component {
   render () {
     return (
       <React.Fragment>
-        <div>第一块</div>
-        <div>第二块</div>
+        <div>第一块1</div>
+        <div>第二块2</div>
       </React.Fragment>
     );
   }
