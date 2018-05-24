@@ -3,7 +3,8 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // webpack4 升级，用extract-text-webpack-plugin提取文件有问题
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const utils = require('./utils');
@@ -55,10 +56,14 @@ const webpackConfig = merge(baseWebpackConfig, {
       sourceMap: config.build.productionSourceMap,
       parallel: true
     }),
-    new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[name].[contenthash].css'),
+    new MiniCssExtractPlugin({
+      filename: utils.assetsPath('css/[name].[contenthash:12].css'),
       allChunks: true,
     }),
+    // new ExtractTextPlugin({
+    //   filename: utils.assetsPath('css/[name].[contenthash].css'),
+    //   allChunks: true,
+    // }),
     new OptimizeCSSPlugin({
       cssProcessorOptions: config.build.productionSourceMap
         ? { safe: true, map: { inline: false } }
