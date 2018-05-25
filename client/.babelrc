@@ -6,7 +6,6 @@
         "loose": true
       }
     ],
-    "stage-0",
     "stage-1",
     "react"
   ],
@@ -14,6 +13,7 @@
     "transform-decorators-legacy",
     "transform-runtime",
     "react-hot-loader/babel",
+    "syntax-dynamic-import",
     [
       "import",
       {

@@ -29,6 +29,10 @@ const webpackConfig = merge(baseWebpackConfig, {
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   optimization: {
+    minimize: true,
+    runtimeChunk: {
+      name: entrypoint => `runtimechunk~${entrypoint.name}`
+    },
     splitChunks: {
       cacheGroups: {
         vendor: {

@@ -19,7 +19,7 @@ const createLintingRule = () => ({
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: './src/main.js',
   },
   output: {
     path: config.build.assetsRoot,
@@ -27,7 +27,7 @@ module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
   },
   resolve: {
-    extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.less']
+    extensions: ['.js', '.json', '.jsx', '.less']
   },
   module: {
     rules: [
