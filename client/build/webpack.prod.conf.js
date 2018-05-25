@@ -30,36 +30,62 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
   optimization: {
     minimize: true,
-    runtimeChunk: {
-      name: entrypoint => `runtimechunk~${entrypoint.name}`
-    },
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        uglifyOptions: {
+          compress: true,
+          ecma: 6,
+          mangle: true
+        },
+        sourceMap: true
+      })
+    ],
     splitChunks: {
       cacheGroups: {
+        commons: {
+          chunks: 'initial',
+          minChunks: 2,
+          maxInitialRequests: 5, // The default limit is too small to showcase the effect
+          minSize: 0 // This is example is too small to create commons chunks
+        },
         vendor: {
-          test: /[\\/]node_modules[\\/]/,
+          test: /node_modules/,
+          chunks: 'initial',
           name: 'vendor',
-          chunks: 'all'
-        },
-        manifest: {
-          name: 'manifest',
-          minChunks: Infinity
-        },
+          priority: 10,
+          enforce: true
+        }
       }
     },
+    // splitChunks: {
+    //   cacheGroups: {
+    //     vendor: {
+    //       test: /[\\/]node_modules[\\/]/,
+    //       name: 'vendor',
+    //       chunks: 'all'
+    //     },
+    //     manifest: {
+    //       name: 'manifest',
+    //       minChunks: Infinity
+    //     },
+    //   }
+    // },
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': env
     }),
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          warnings: false
-        }
-      },
-      sourceMap: config.build.productionSourceMap,
-      parallel: true
-    }),
+    // new UglifyJsPlugin({
+    //   uglifyOptions: {
+    //     compress: {
+    //       warnings: false
+    //     }
+    //   },
+    //   sourceMap: config.build.productionSourceMap,
+    //   parallel: true
+    // }),
     new MiniCssExtractPlugin({
       filename: utils.assetsPath('css/[name].[contenthash:12].css'),
       allChunks: true,
