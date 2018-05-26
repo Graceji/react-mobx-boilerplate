@@ -20,6 +20,7 @@ module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
     app: './src/main.js',
+    vendor: ['react','react-dom','react-router-dom']
   },
   output: {
     path: config.build.assetsRoot,
