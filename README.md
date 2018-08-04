@@ -1,4 +1,5 @@
 ## React-Mobx-Boilerplate
+```
 .
 ├── README.md
 └── client
@@ -39,6 +40,7 @@
     └── template.html
 
 10 directories, 27 files
+```
 
 #### 运行
 
