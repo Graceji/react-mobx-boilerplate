@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 // const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // webpack4 升级，用extract-text-webpack-plugin提取文件有问题
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -137,8 +138,13 @@ const webpackConfig = merge(baseWebpackConfig, {
       },
       chunksSortMode: 'dependency'
     }),
+    new HtmlWebpackIncludeAssetsPlugin({
+      assets: ['react.dll.js'],
+      publicPath: config.dev.assetsPublicPath,
+      append: true
+    }),
     new webpack.HashedModuleIdsPlugin(),
-    new webpack.optimize.ModuleConcatenationPlugin
+    new webpack.optimize.ModuleConcatenationPlugin,
   ]
 });
 

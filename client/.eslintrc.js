@@ -20,6 +20,8 @@ module.exports = {
     'space-before-function-paren': ['error', 'always'],
     'class-methods-use-this': 'off',
     'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }],
+    'react/require-default-props': [0],
+    'no-console': [0],
     'comma-dangle': ['error', {
       'arrays': 'always-multiline',
       'objects': 'always-multiline',

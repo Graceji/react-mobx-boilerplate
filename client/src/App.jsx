@@ -58,6 +58,8 @@ class App extends Component {
           <Link to="/" className="test">首页</Link>
           <br />
           <Link to="/detail">详情页</Link>
+          <br />
+          <Link to="/test">测试页</Link>
         </div>
         <TestAntd columns={this.state.columns} dataSource={this.state.data} />
         <Routes />

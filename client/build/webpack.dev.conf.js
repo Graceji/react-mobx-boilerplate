@@ -6,6 +6,8 @@ const path = require('path');
 const webpack = require('webpack');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+// const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 const config = require('../config');
 const baseWebpackConfig = require('./webpack.base.conf');
 const utils = require('./utils');
@@ -27,7 +29,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       ],
     },
     hot: true,
-    contentBase: false,
+    contentBase: path.resolve(__dirname, '../dist'), // 要访问额外的静态资源就得配, 不然找不到文件
     compress: true,
     host: HOST || config.dev.host,
     port: PORT || config.dev.port,
@@ -52,9 +54,20 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'index.html',
-      inject: true
-    })
+      template: './template.html',
+      inject: true,
+      isDev: true,
+      title: '测试',
+      vendor: '/react.dll.js',
+    }),
+    // new AddAssetHtmlPlugin([{
+    //   filepath: path.resolve(__dirname, '../dist/react.dll.js'),
+    // }]),
+    // new HtmlWebpackIncludeAssetsPlugin({
+    //   assets: ['react.dll.js'],
+    //   publicPath: config.dev.assetsPublicPath,
+    //   append: true
+    // })
   ]
 });
 

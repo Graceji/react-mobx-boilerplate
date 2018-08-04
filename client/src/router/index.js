@@ -19,14 +19,16 @@ const LoadableTopicDetail = Loadable({
   loading: Loading,
 });
 
-// import TopicList from '../containers/TopicList';
-// import TopicDetail from '../containers/TopicListDetail';
+const LoadableTest = Loadable({
+  loader: () => import('../containers/Test'),
+  loading: Loading,
+});
 
 export default () => (
   <React.Fragment>
-    {/* <Redirect to="/list" /> */}
     <Route exact path="/" render={() => <Redirect to="/list" />} />
     <Route path="/list" component={LoadableTopicList} />
     <Route path="/detail" component={LoadableTopicDetail} />
+    <Route path="/test" component={LoadableTest} />
   </React.Fragment>
 );
